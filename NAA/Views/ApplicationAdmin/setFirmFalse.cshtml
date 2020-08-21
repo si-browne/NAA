@@ -1,0 +1,80 @@
+﻿@model NAA.Data.Application
+
+@{
+    ViewBag.Title = "setFirmFalse";
+}
+
+<h3>Select Update to choose this Application as your firm choice.</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicantId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniversityId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonalStatement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonalStatement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherReference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherReference)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherContactDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherContactDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversityOffer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniversityOffer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Update", "setFirmTrue", "ApplicationAdmin", new { application_id = Model.ApplicationId }, null)
+</p>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<NAA.Data.University>
+
+@{
+    ViewBag.Title = "GetUniversities";
+}
+
+<hr>
+<h2 class="text-center">Stage 1: Select University To View Available Courses.</h2>
+<hr>
+@*@ViewBag.applicantid*@
+
+
+<table class="table">
+    <tr>
+        <th>
+            University Name
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniversityName)
+            </td>
+            <td>
+                @*Passing in UniversityId new { id = item.UniversityId }*@
+                @Html.ActionLink("View Courses", "ListCourses", "Application", new { uni_id = item.UniversityId, applicant_id = ViewBag.applicantid }, null)
+            </td>
+        </tr>
+    }
+
+</table>

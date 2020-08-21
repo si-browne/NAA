@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetNAAapplications">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNAAapplicationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNAAapplicationsResult" type="tns:ArrayOfApplication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApplication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Application">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicantId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniversityId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonalStatement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherContactDetails" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniversityOffer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Firm" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNAAapplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNAAapplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNAAapplicationResult" type="tns:Application" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNAAcourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="course" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNAAcourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNAAcourseResult" type="tns:Application" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfApplication" nillable="true" type="tns:ArrayOfApplication" />
+      <s:element name="Application" nillable="true" type="tns:Application" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetNAAapplicationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNAAapplications" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNAAapplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNAAapplication" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNAAapplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAcourseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNAAcourse" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAcourseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNAAcourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationsHttpGetIn" />
+  <wsdl:message name="GetNAAapplicationsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfApplication" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationHttpGetOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAcourseHttpGetIn">
+    <wsdl:part name="course" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAcourseHttpGetOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationsHttpPostIn" />
+  <wsdl:message name="GetNAAapplicationsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfApplication" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAapplicationHttpPostOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAcourseHttpPostIn">
+    <wsdl:part name="course" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNAAcourseHttpPostOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:portType name="NAAWebServiceSoap">
+    <wsdl:operation name="GetNAAapplications">
+      <wsdl:input message="tns:GetNAAapplicationsSoapIn" />
+      <wsdl:output message="tns:GetNAAapplicationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAapplication">
+      <wsdl:input message="tns:GetNAAapplicationSoapIn" />
+      <wsdl:output message="tns:GetNAAapplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAcourse">
+      <wsdl:input message="tns:GetNAAcourseSoapIn" />
+      <wsdl:output message="tns:GetNAAcourseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NAAWebServiceHttpGet">
+    <wsdl:operation name="GetNAAapplications">
+      <wsdl:input message="tns:GetNAAapplicationsHttpGetIn" />
+      <wsdl:output message="tns:GetNAAapplicationsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAapplication">
+      <wsdl:input message="tns:GetNAAapplicationHttpGetIn" />
+      <wsdl:output message="tns:GetNAAapplicationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAcourse">
+      <wsdl:input message="tns:GetNAAcourseHttpGetIn" />
+      <wsdl:output message="tns:GetNAAcourseHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NAAWebServiceHttpPost">
+    <wsdl:operation name="GetNAAapplications">
+      <wsdl:input message="tns:GetNAAapplicationsHttpPostIn" />
+      <wsdl:output message="tns:GetNAAapplicationsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAapplication">
+      <wsdl:input message="tns:GetNAAapplicationHttpPostIn" />
+      <wsdl:output message="tns:GetNAAapplicationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAcourse">
+      <wsdl:input message="tns:GetNAAcourseHttpPostIn" />
+      <wsdl:output message="tns:GetNAAcourseHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NAAWebServiceSoap" type="tns:NAAWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetNAAapplications">
+      <soap:operation soapAction="http://tempuri.org/GetNAAapplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAapplication">
+      <soap:operation soapAction="http://tempuri.org/GetNAAapplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAcourse">
+      <soap:operation soapAction="http://tempuri.org/GetNAAcourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NAAWebServiceSoap12" type="tns:NAAWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetNAAapplications">
+      <soap12:operation soapAction="http://tempuri.org/GetNAAapplications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAapplication">
+      <soap12:operation soapAction="http://tempuri.org/GetNAAapplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAcourse">
+      <soap12:operation soapAction="http://tempuri.org/GetNAAcourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NAAWebServiceHttpGet" type="tns:NAAWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetNAAapplications">
+      <http:operation location="/GetNAAapplications" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAapplication">
+      <http:operation location="/GetNAAapplication" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAcourse">
+      <http:operation location="/GetNAAcourse" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NAAWebServiceHttpPost" type="tns:NAAWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetNAAapplications">
+      <http:operation location="/GetNAAapplications" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAapplication">
+      <http:operation location="/GetNAAapplication" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNAAcourse">
+      <http:operation location="/GetNAAcourse" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NAAWebService">
+    <wsdl:port name="NAAWebServiceSoap" binding="tns:NAAWebServiceSoap">
+      <soap:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NAAWebServiceSoap12" binding="tns:NAAWebServiceSoap12">
+      <soap12:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NAAWebServiceHttpGet" binding="tns:NAAWebServiceHttpGet">
+      <http:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NAAWebServiceHttpPost" binding="tns:NAAWebServiceHttpPost">
+      <http:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

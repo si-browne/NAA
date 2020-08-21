@@ -1,0 +1,70 @@
+﻿@model NAA.Data.Profile
+
+@{
+    ViewBag.Title = "Profile";
+}
+<hr>
+<marquee><h2>Profile: @Html.DisplayFor(model => model.ApplicantName)</h2></marquee>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantName)
+        </dd>
+
+        <dt>
+            Address: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantAddress)
+        </dd>
+
+        <dt>
+            Phone: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            Email: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            User ID: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<div Style="text-align:center; font-size:18px;">
+    <hr>
+    @Html.ActionLink("Update Profile", "EditProfile", "ProfileAdmin")
+    <br />
+    <br />
+    @Html.ActionLink("Create New Profile", "AddProfile", "ProfileAdmin")
+    <br />
+    <br />
+    @Html.ActionLink("Apply For Course", "GetUniversities", "University", new { applicant_id = Model.ApplicantId }, null)
+    <br />
+    <br />
+    @Html.ActionLink("Applications With Offers", "GetNotNullApplications", "Application", new { applicant_id = Model.ApplicantId }, null)
+    <br />
+    <br />
+    @Html.ActionLink("Applications With No Offers", "GetNullApplications", "Application", new { applicant_id = Model.ApplicantId }, null)
+    <br />
+</div>

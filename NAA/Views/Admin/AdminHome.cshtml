@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "AdminHome";
+}
+
+<h2>Admin Functionalities:</h2>
+
+
+<div Style="text-align:center; font-size:18px;">
+    <hr>
+    @Html.ActionLink("List Roles", "GetRoles")
+    <br />
+    <br />
+    @Html.ActionLink("List Users", "GetUsers")
+    <br />
+    <br />
+    @Html.ActionLink("Get Roles for a specific User", "GetRolesforUser")
+    <br />
+    <br />
+    @Html.ActionLink("Add a new Role", "AddRole")
+    <br />
+    <br />
+    @Html.ActionLink("Manage User Roles", "ManageUserRoles")
+    <br />
+</div>

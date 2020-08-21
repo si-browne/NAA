@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "GetUsers";
+}
+
+<h2>List of Users</h2>
+
+@foreach (var user in Model)
+{
+    <p>
+        @user.UserName |
+        @Html.ActionLink("Edit", "EditUser", new {Id = user.Id}) |
+        @Html.ActionLink("Delete", "DeleteUser", new { Id = user.Id})
+    </p>
+}
+@Html.ActionLink("Add User", "Register", new { controller = "Account"})

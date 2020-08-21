@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUniApplications">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uni_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUniApplicationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUniApplicationsResult" type="tns:ArrayOfApplication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApplication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Application">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicantId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniversityId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonalStatement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherContactDetails" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniversityOffer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Firm" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStudentApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="application_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uni_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStudentApplicationResult" type="tns:Application" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentApplicationToUpdateOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="application_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uni_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="offer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentApplicationToUpdateOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStudentApplicationToUpdateOfferResult" type="tns:Application" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStudentApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="application_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uni_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="offer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStudentApplicationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUniApplicationsAuth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uni_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUniApplicationsAuthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUniApplicationsAuthResult" type="tns:ArrayOfApplication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticationHeader" type="tns:AuthenticationHeader" />
+      <s:complexType name="AuthenticationHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pass" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetUniApplicationsBEAN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UniversityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUniApplicationsBEANResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUniApplicationsBEANResult" type="tns:ArrayOfUniApplicationBEAN" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUniApplicationBEAN">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UniApplicationBEAN" nillable="true" type="tns:UniApplicationBEAN" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UniApplicationBEAN">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UniversityId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonalStatement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniversityOffer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicantId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicantName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicantAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Firm" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStudentAppsBEAN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UniversityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ApplicationId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentAppsBEANResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStudentAppsBEANResult" type="tns:ArrayOfStudentAppBEAN" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStudentAppBEAN">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StudentAppBEAN" nillable="true" type="tns:StudentAppBEAN" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StudentAppBEAN">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UniversityId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonalStatement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniversityOffer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicantId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicantName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicantAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Firm" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfApplication" nillable="true" type="tns:ArrayOfApplication" />
+      <s:element name="Application" nillable="true" type="tns:Application" />
+      <s:element name="ArrayOfUniApplicationBEAN" nillable="true" type="tns:ArrayOfUniApplicationBEAN" />
+      <s:element name="ArrayOfStudentAppBEAN" nillable="true" type="tns:ArrayOfStudentAppBEAN" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUniApplicationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUniApplications" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUniApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStudentApplication" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStudentApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationToUpdateOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStudentApplicationToUpdateOffer" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationToUpdateOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStudentApplicationToUpdateOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStudentApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateStudentApplication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStudentApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateStudentApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsAuthSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUniApplicationsAuth" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsAuthSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUniApplicationsAuthResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsAuthAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsBEANSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUniApplicationsBEAN" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsBEANSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUniApplicationsBEANResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentAppsBEANSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStudentAppsBEAN" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentAppsBEANSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStudentAppsBEANResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsHttpGetIn">
+    <wsdl:part name="uni_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfApplication" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationHttpGetIn">
+    <wsdl:part name="application_id" type="s:string" />
+    <wsdl:part name="uni_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationHttpGetOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationToUpdateOfferHttpGetIn">
+    <wsdl:part name="application_id" type="s:string" />
+    <wsdl:part name="uni_id" type="s:string" />
+    <wsdl:part name="offer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationToUpdateOfferHttpGetOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStudentApplicationHttpGetIn">
+    <wsdl:part name="application_id" type="s:string" />
+    <wsdl:part name="uni_id" type="s:string" />
+    <wsdl:part name="offer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStudentApplicationHttpGetOut" />
+  <wsdl:message name="GetUniApplicationsAuthHttpGetIn">
+    <wsdl:part name="uni_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsAuthHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfApplication" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsBEANHttpGetIn">
+    <wsdl:part name="UniversityId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsBEANHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUniApplicationBEAN" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentAppsBEANHttpGetIn">
+    <wsdl:part name="UniversityId" type="s:string" />
+    <wsdl:part name="ApplicationId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentAppsBEANHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfStudentAppBEAN" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsHttpPostIn">
+    <wsdl:part name="uni_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfApplication" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationHttpPostIn">
+    <wsdl:part name="application_id" type="s:string" />
+    <wsdl:part name="uni_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationHttpPostOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationToUpdateOfferHttpPostIn">
+    <wsdl:part name="application_id" type="s:string" />
+    <wsdl:part name="uni_id" type="s:string" />
+    <wsdl:part name="offer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentApplicationToUpdateOfferHttpPostOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStudentApplicationHttpPostIn">
+    <wsdl:part name="application_id" type="s:string" />
+    <wsdl:part name="uni_id" type="s:string" />
+    <wsdl:part name="offer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStudentApplicationHttpPostOut" />
+  <wsdl:message name="GetUniApplicationsAuthHttpPostIn">
+    <wsdl:part name="uni_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsAuthHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfApplication" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsBEANHttpPostIn">
+    <wsdl:part name="UniversityId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUniApplicationsBEANHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUniApplicationBEAN" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentAppsBEANHttpPostIn">
+    <wsdl:part name="UniversityId" type="s:string" />
+    <wsdl:part name="ApplicationId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentAppsBEANHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfStudentAppBEAN" />
+  </wsdl:message>
+  <wsdl:portType name="NAAWebServiceSoap">
+    <wsdl:operation name="GetUniApplications">
+      <wsdl:input message="tns:GetUniApplicationsSoapIn" />
+      <wsdl:output message="tns:GetUniApplicationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplication">
+      <wsdl:input message="tns:GetStudentApplicationSoapIn" />
+      <wsdl:output message="tns:GetStudentApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplicationToUpdateOffer">
+      <wsdl:input message="tns:GetStudentApplicationToUpdateOfferSoapIn" />
+      <wsdl:output message="tns:GetStudentApplicationToUpdateOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudentApplication">
+      <wsdl:input message="tns:UpdateStudentApplicationSoapIn" />
+      <wsdl:output message="tns:UpdateStudentApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsAuth">
+      <wsdl:input message="tns:GetUniApplicationsAuthSoapIn" />
+      <wsdl:output message="tns:GetUniApplicationsAuthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsBEAN">
+      <wsdl:input message="tns:GetUniApplicationsBEANSoapIn" />
+      <wsdl:output message="tns:GetUniApplicationsBEANSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentAppsBEAN">
+      <wsdl:input message="tns:GetStudentAppsBEANSoapIn" />
+      <wsdl:output message="tns:GetStudentAppsBEANSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NAAWebServiceHttpGet">
+    <wsdl:operation name="GetUniApplications">
+      <wsdl:input message="tns:GetUniApplicationsHttpGetIn" />
+      <wsdl:output message="tns:GetUniApplicationsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplication">
+      <wsdl:input message="tns:GetStudentApplicationHttpGetIn" />
+      <wsdl:output message="tns:GetStudentApplicationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplicationToUpdateOffer">
+      <wsdl:input message="tns:GetStudentApplicationToUpdateOfferHttpGetIn" />
+      <wsdl:output message="tns:GetStudentApplicationToUpdateOfferHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudentApplication">
+      <wsdl:input message="tns:UpdateStudentApplicationHttpGetIn" />
+      <wsdl:output message="tns:UpdateStudentApplicationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsAuth">
+      <wsdl:input message="tns:GetUniApplicationsAuthHttpGetIn" />
+      <wsdl:output message="tns:GetUniApplicationsAuthHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsBEAN">
+      <wsdl:input message="tns:GetUniApplicationsBEANHttpGetIn" />
+      <wsdl:output message="tns:GetUniApplicationsBEANHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentAppsBEAN">
+      <wsdl:input message="tns:GetStudentAppsBEANHttpGetIn" />
+      <wsdl:output message="tns:GetStudentAppsBEANHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NAAWebServiceHttpPost">
+    <wsdl:operation name="GetUniApplications">
+      <wsdl:input message="tns:GetUniApplicationsHttpPostIn" />
+      <wsdl:output message="tns:GetUniApplicationsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplication">
+      <wsdl:input message="tns:GetStudentApplicationHttpPostIn" />
+      <wsdl:output message="tns:GetStudentApplicationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplicationToUpdateOffer">
+      <wsdl:input message="tns:GetStudentApplicationToUpdateOfferHttpPostIn" />
+      <wsdl:output message="tns:GetStudentApplicationToUpdateOfferHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudentApplication">
+      <wsdl:input message="tns:UpdateStudentApplicationHttpPostIn" />
+      <wsdl:output message="tns:UpdateStudentApplicationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsAuth">
+      <wsdl:input message="tns:GetUniApplicationsAuthHttpPostIn" />
+      <wsdl:output message="tns:GetUniApplicationsAuthHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsBEAN">
+      <wsdl:input message="tns:GetUniApplicationsBEANHttpPostIn" />
+      <wsdl:output message="tns:GetUniApplicationsBEANHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentAppsBEAN">
+      <wsdl:input message="tns:GetStudentAppsBEANHttpPostIn" />
+      <wsdl:output message="tns:GetStudentAppsBEANHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NAAWebServiceSoap" type="tns:NAAWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUniApplications">
+      <soap:operation soapAction="http://tempuri.org/GetUniApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplication">
+      <soap:operation soapAction="http://tempuri.org/GetStudentApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplicationToUpdateOffer">
+      <soap:operation soapAction="http://tempuri.org/GetStudentApplicationToUpdateOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudentApplication">
+      <soap:operation soapAction="http://tempuri.org/UpdateStudentApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsAuth">
+      <soap:operation soapAction="http://tempuri.org/GetUniApplicationsAuth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUniApplicationsAuthAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsBEAN">
+      <soap:operation soapAction="http://tempuri.org/GetUniApplicationsBEAN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentAppsBEAN">
+      <soap:operation soapAction="http://tempuri.org/GetStudentAppsBEAN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NAAWebServiceSoap12" type="tns:NAAWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUniApplications">
+      <soap12:operation soapAction="http://tempuri.org/GetUniApplications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplication">
+      <soap12:operation soapAction="http://tempuri.org/GetStudentApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplicationToUpdateOffer">
+      <soap12:operation soapAction="http://tempuri.org/GetStudentApplicationToUpdateOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudentApplication">
+      <soap12:operation soapAction="http://tempuri.org/UpdateStudentApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsAuth">
+      <soap12:operation soapAction="http://tempuri.org/GetUniApplicationsAuth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUniApplicationsAuthAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsBEAN">
+      <soap12:operation soapAction="http://tempuri.org/GetUniApplicationsBEAN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentAppsBEAN">
+      <soap12:operation soapAction="http://tempuri.org/GetStudentAppsBEAN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NAAWebServiceHttpGet" type="tns:NAAWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetUniApplications">
+      <http:operation location="/GetUniApplications" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplication">
+      <http:operation location="/GetStudentApplication" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplicationToUpdateOffer">
+      <http:operation location="/GetStudentApplicationToUpdateOffer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudentApplication">
+      <http:operation location="/UpdateStudentApplication" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsAuth">
+      <http:operation location="/GetUniApplicationsAuth" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsBEAN">
+      <http:operation location="/GetUniApplicationsBEAN" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentAppsBEAN">
+      <http:operation location="/GetStudentAppsBEAN" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NAAWebServiceHttpPost" type="tns:NAAWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetUniApplications">
+      <http:operation location="/GetUniApplications" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplication">
+      <http:operation location="/GetStudentApplication" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentApplicationToUpdateOffer">
+      <http:operation location="/GetStudentApplicationToUpdateOffer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudentApplication">
+      <http:operation location="/UpdateStudentApplication" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsAuth">
+      <http:operation location="/GetUniApplicationsAuth" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniApplicationsBEAN">
+      <http:operation location="/GetUniApplicationsBEAN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentAppsBEAN">
+      <http:operation location="/GetStudentAppsBEAN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NAAWebService">
+    <wsdl:port name="NAAWebServiceSoap" binding="tns:NAAWebServiceSoap">
+      <soap:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NAAWebServiceSoap12" binding="tns:NAAWebServiceSoap12">
+      <soap12:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NAAWebServiceHttpGet" binding="tns:NAAWebServiceHttpGet">
+      <http:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NAAWebServiceHttpPost" binding="tns:NAAWebServiceHttpPost">
+      <http:address location="http://webteach_net.hallam.shu.ac.uk/b7033055/NAAWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

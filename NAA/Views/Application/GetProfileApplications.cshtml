@@ -1,0 +1,55 @@
+﻿@model IEnumerable<NAA.Data.Application>
+
+@{
+    ViewBag.Title = "GetProfileApplications";
+}
+
+<h2>Your Applications:</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Teacher Reference
+        </th>
+        <th>
+            Teacher Contact Details
+        </th>
+        <th>
+            Offer Status
+        </th>
+        <th>
+            Firm
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeacherReference)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeacherContactDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UniversityOffer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firm)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApplicationId })
+        </td>
+    </tr>
+}
+
+</table>

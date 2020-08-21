@@ -1,0 +1,91 @@
+﻿@model NAA.Data.Application
+
+@{
+    ViewBag.Title = "MakeApplication";
+}
+<hr>
+<h2 class="text-center">Stage 3: Apply for Course. </h2>
+<hr>
+<p style="color:red;">WARNING. These are the personal statement rules. You may have to cancel your application and start from the beginning if you do not do the following:</p>
+
+<ul style="color:red;">
+    <li>DO NOT Leave your personal statement blank</li>
+    <li>Your personal statement must be more than 2 characters</li>
+    <li>Your personal statement must be less than 200 characters</li>
+</ul>
+<hr>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <strong>Application ID:</strong> @ViewBag.newrow
+            <div class="col-md-10 hidden">
+                @Html.TextBoxFor(model => model.ApplicationId, new { @Value = ViewBag.newrow })
+                @Html.ValidationMessageFor(model => model.ApplicationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <strong>Applicant ID:</strong> @ViewBag.applicant_id
+            <div class="col-md-10 hidden">
+                @Html.TextBoxFor(model => model.ApplicantId, new { @Value = ViewBag.applicant_id })
+                @Html.ValidationMessageFor(model => model.ApplicantId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong>Course:</strong> @ViewBag.course
+            <div class="col-md-10 hidden">
+                @Html.TextBoxFor(model => model.CourseName, new { @Value = ViewBag.course })
+                @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong>University ID:</strong> @ViewBag.uni_id
+            <div class="col-md-10 hidden">
+                @Html.TextBoxFor(model => model.UniversityId, new { @Value = ViewBag.uni_id })
+                @Html.ValidationMessageFor(model => model.UniversityId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong>Teacher Reference:</strong> @ViewBag.teacher_ref
+            <div class="col-md-10 hidden">
+
+                @Html.TextBoxFor(model => model.TeacherReference, new { @Value = ViewBag.teacher_ref })
+                @Html.ValidationMessageFor(model => model.TeacherReference, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong>Teacher Contact Details:</strong> @ViewBag.teacher_con
+            <div class="col-md-10 hidden">
+                @Html.TextBoxFor(model => model.TeacherContactDetails, new { @Value = ViewBag.teacher_con })
+                @Html.ValidationMessageFor(model => model.TeacherContactDetails, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <strong>Enter your personal statement:</strong>
+                @Html.EditorFor(model => model.PersonalStatement, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PersonalStatement, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Cancel Application", "GetProfile", "Profile", new { id = ViewBag.applicant_id }, null)
+</div>

@@ -1,0 +1,47 @@
+﻿@model List<RemoteServiceModel.NAAServiceReference.Application>
+
+@{
+    ViewBag.Title = "ListCourses";
+}
+<hr>
+<h2 class="text-center">Stage 2: Select your Course. </h2>
+
+<hr>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Teachers Reference
+        </th>
+        <th>
+            Teachers Contact Details
+        </th>
+        <th>
+            Apply
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherReference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherContactDetails)
+            </td>
+            <td>
+                @Html.ActionLink("Apply", "MakeApplication", "ApplicationAdmin", new {
+                    uni_id = item.UniversityId,
+                    applicant_id = ViewBag.applicantid,
+                    course = item.CourseName}, null)
+            </td>
+        </tr>
+    }
+
+</table>
